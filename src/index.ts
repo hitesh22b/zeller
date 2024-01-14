@@ -13,12 +13,36 @@ promotionsManager.createBuyXForY('atv', 3, 2);
 promotionsManager.createDropPrice('ipd', 4, 499.99);
 
 let co = new Checkout(promotionsManager.getAllPromotions());
-
-co.scan(ipd);
-co.scan(mbp);
+co.scan(atv);
+co.scan(atv);
 co.scan(atv);
 co.scan(vga);
 
-console.log(co.total());
+console.log(`3 atv, 1vga -> ${co.total()}   (Buy X for price of Y promotion)`);
+
+
+co.clearCart();
+
+co.scan(atv);
+co.scan(ipd);
+co.scan(ipd);
+co.scan(atv);
+co.scan(ipd);
+co.scan(ipd);
+co.scan(ipd);
+
+console.log(`2 atv and 5 ipd -> ${co.total()} (Drop Price Promotion)`);
+
+co.clearCart();
+
+co.scan(atv);
+co.scan(atv);
+co.scan(atv);
+co.scan(atv);
+co.scan(atv);
+co.scan(atv);
+co.scan(mbp);
+
+console.log(`6 atv and 1 mbp ${co.total()} (Buy X for price of Y promotion)`);
 
 

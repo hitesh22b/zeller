@@ -1,4 +1,4 @@
 export interface Promotion {
-    getDiscount(): number;
+    getDiscount(shoppingCart: Map<string, number>, itemPricing: Map<string, number>): number;
     readonly id: string;
 }

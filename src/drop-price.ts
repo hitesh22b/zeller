@@ -11,8 +11,12 @@ export class DropPrice implements Promotion {
         this.itemsCount = itemsCount;
         this.newPrice = newPrice;
     }
-    getDiscount(): number {
-        return 0;
+    getDiscount(shoppingCart: Map<string, number>, itemsPricing: Map<string, number>): number {
+        let discount = 0;
+        if(shoppingCart.get(this.itemSku) >= this.itemsCount) {
+            discount = discount +  ((itemsPricing.get(this.itemSku) - this.newPrice) * shoppingCart.get(this.itemSku));
+        }
+        return discount;
     }
 
 

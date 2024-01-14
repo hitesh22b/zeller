@@ -1,6 +1,6 @@
 import { Promotion } from "./promotion.js";
 import {DropPrice} from "./drop-price.js";
-import {BuyXgetY} from "./buyXgetY.js";
+import {BuyXForY} from "./buyXForY.js";
 
 export class PromotionsManager {
     private promotions:  Promotion[] = [];
@@ -10,9 +10,10 @@ export class PromotionsManager {
     }
 
     public createBuyXForY(itemSku: string, numberOfPaidItems: number, numberOfFreeItems: number): void {
-        this.promotions.push(new BuyXgetY(itemSku, numberOfPaidItems, numberOfFreeItems));
+        this.promotions.push(new BuyXForY(itemSku, numberOfPaidItems, numberOfFreeItems));
     }
 
+    // Sales Manager if decides to remove a promotion can use the below functionality
     public removePromotion(promotionId: string) {
         this.promotions = this.promotions.filter(promotion => promotion.id !== promotionId);
     }
